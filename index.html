@@ -2,17 +2,27 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="script.js"></script>
+    <script src="pickaxe.js"></script>
+    <script src="rock.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-          <a-asset_item id="" src=""></a-asset_item>
+          <img id="c" src="crosshair.png"></img>
+          <img id="sky" src="background.jpg"></img>
+          <img id="grass" src="grass.jpg"></img>
       </a-assets>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
-      <a-camera position="0 1.6 0">
-        
-      </a-camera>
+
+      <a-plane src="#grass" repeat="100 100" position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
+      <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
+      <a-entity id="maincamera" camera="fov:90" look-controls wasd-controls="acceleration:15" position="0 1.6 0">
+            <a-entity cursor="fuse: true; fuseTimeout: 500"
+            position="0 0 -1"
+            geometry="primitive: circle; radius:0.01;"
+            material="color: black; shader: flat">
+            </a-entity>
+      </a-entity>
+      
     </a-scene>
   </body>
 </html>
