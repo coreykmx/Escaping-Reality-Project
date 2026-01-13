@@ -10,13 +10,12 @@ class Rock{
         this.obj.append(rock)
         this.obj.setAttribute("position",{x:x,y:y,z:z})
         scene.append(this.obj)
-        if(this.visible == false){
-            rock.setAttribute("transparent",true);
-        }
-        
+
     }
 
     mined(){
-        this.visible = false;
+        if(this.visible == false){
+            rock.setAttribute("opacity",0);
+        }
     }
 }

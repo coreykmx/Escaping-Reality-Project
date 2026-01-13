@@ -9,13 +9,13 @@ window.addEventListener("DOMContentLoaded",function() {
     rock.visible = true;
 
     window.addEventListener("click",function(){
-    if(distance(camera,rock.obj)<3){
-    rock.mined()
-    
-    console.log("hi")
-    }
-    
+      if(distance(camera,rock.obj)<3){
+      rock.mined() 
+      rock.visible = false
+      console.log("mined")
+      }
     })
+
 })
 
 function distance(obj1,obj2){
