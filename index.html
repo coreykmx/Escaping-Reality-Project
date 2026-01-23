@@ -8,19 +8,20 @@
   <body>
     <a-scene>
       <a-assets>
-          <img id="c" src="crosshair.png"></img>
           <img id="sky" src="background.jpg"></img>
           <img id="grass" src="grass.jpg"></img>
       </a-assets>
 
       <a-plane src="#grass" repeat="100 100" position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
       <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
-      <a-entity id="maincamera" camera="fov:90" look-controls wasd-controls="acceleration:15" position="0 1.6 0">
-            <a-entity cursor="fuse: true; fuseTimeout: 500"
-            position="0 0 -1"
-            geometry="primitive: circle; radius:0.01;"
-            material="color: black; shader: flat">
+      <a-camera id="maincamera" fov="90" look-controls wasd-controls="acceleration:15" position="0 1.6 0">
+            <a-entity cursor="fuse: false"
+            position="0 0 -0.01"
+            geometry="primitive: circle; radius:0.0001;"
+            material="color: black; shader: flat"
+            raycaster="objects: [clickable]">
             </a-entity>
+            <a-text id="rock_text" position="-2 0.75 -1" value="Rocks: " color="black"></a-text>
       </a-entity>
       
     </a-scene>

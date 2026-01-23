@@ -1,22 +1,33 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
-let scene, pickaxe, rock, camera;
+let scene, pickaxe, rocks=[], camera;
+let rock_amount = 0,rock_text;
 
 window.addEventListener("DOMContentLoaded",function() {
     scene = document.querySelector("a-scene");
     camera = document.querySelector("#maincamera");
+    rock_text = document.getElementById("rock_text");
     pickaxe = new Pickaxe();
-    rock = new Rock(0, 1, 0);
-    rock.visible = true;
 
-    window.addEventListener("click",function(){
-      if(distance(camera,rock.obj)<3){
-      rock.mined() 
-      rock.visible = false
-      console.log("mined")
-      }
-    })
+    for(let i=0;i<25; i++){
+      let a = rnd(-25,25);
+      let b = rnd(-25,25);
+      let r = new Rock(a,1,b,100);
+      rocks.push(r);
+    }
 
+  loop();
 })
+
+function loop(){
+  rock_text.setAttribute("value",`Rocks: ${rock_amount}`); 
+  for(let rock of rocks){
+    rock.dug()
+
+  }
+
+  window.requestAnimationFrame( loop );
+}
+
 
 function distance(obj1,obj2){
   let x1 = obj1.object3D.position.x;
