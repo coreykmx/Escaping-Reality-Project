@@ -21,8 +21,8 @@ window.addEventListener("DOMContentLoaded",function() {
 function loop(){
   rock_text.setAttribute("value",`Rocks: ${rock_amount}`); 
   for(let rock of rocks){
-    rock.dug()
-
+    rock.dug();
+    rock.faceCamera();
   }
 
   window.requestAnimationFrame( loop );
