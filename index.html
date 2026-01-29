@@ -2,8 +2,16 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="script.js"></script>
-    <script src="pickaxe.js"></script>
-    <script src="rock.js"></script>
+    <script src="picks/ironpickaxe.js"></script>
+    <script src="picks/pickaxe.js"></script>
+    <script src="ores/rock.js"></script>
+    <script src="ores/copper.js"></script>
+    <script src="ores/silver.js"></script>
+    <script src="ores/iron.js"></script>
+    <script src="ores/platinum.js"></script>
+    <script src="ores/gold.js"></script>
+    <script src="ores/diamond.js"></script>
+    <script src="sell.js"></script>
   </head>
   <body>
     <a-scene>
@@ -22,6 +30,8 @@
             raycaster="objects: [clickable]">
             </a-entity>
             <a-text id="rock_text" width="0.025" position="-0.0175 0.0075 -0.01" value="Rocks: " color="black"></a-text>
+            <a-text id="copper_text" width="0.025" position="-0.0175 0.0050 -0.01" value="Copper: " color="black"></a-text>
+            <a-text id="money_text" width="0.025" position="-0.0175 0.0025 -0.01" value="Money: " color="black"></a-text>
       </a-entity>
       
     </a-scene>

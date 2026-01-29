@@ -29,8 +29,8 @@ class Rock{
 
         this.obj.setAttribute("clickable","");
         this.obj.addEventListener("click",()=>{
-            if(distance(camera,this.obj)<5){
-                this.h -= 25;
+            if(distance(camera,this.obj)<4){
+                this.h -= pickaxe_power;
             console.log("Health:", this.h);
             this.updateHealthBar();
             }
@@ -38,7 +38,7 @@ class Rock{
             if(this.h <= 0){
                 this.obj.mined = true;
                 console.log("Mined");
-                setTimeout(() => this.regenerate(), 60000);
+                setTimeout(() => this.regenerate(), 30000);
             }
         })   
 
