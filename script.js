@@ -3,18 +3,19 @@ let scene, pickaxe, camera;
 let pickaxe_power = 25;
 let rocks=[], rock_amount = 0, rock_text;
 let coppers=[], copper_amount = 0, copper_text;
-let stone = false, iron = false;
+let stone = false, copper = false, iron = false, diamond = false;
+let owned_stone = false, owned_copper = false, owned_iron = false, owned_diamond = false;
 let money = 0, money_text;  
-let sellzone;
+let sellzone, shop, inventory;
+let canMine = true;
 
 window.addEventListener("DOMContentLoaded",function() {
     scene = document.querySelector("a-scene");
     camera = document.querySelector("#maincamera");
-    rock_text = document.getElementById("rock_text");
-    copper_text = document.getElementById("copper_text");
-    money_text = document.getElementById("money_text");
-    pickaxe = new StonePickaxe(pickaxe_power);
+    money_text = document.getElementById("money_bg");
     sellzone = new SellZone(0,1,-5);
+    shop = new Shop(0,1,5);
+    inventory = new Inventory();
 
     // Rocks
     for(let i=0;i<25; i++){
@@ -32,33 +33,33 @@ window.addEventListener("DOMContentLoaded",function() {
       coppers.push(c);
     }
 
+  window.addEventListener("keydown", function(e){
+    if(e.key.toLowerCase() == "shift"){
+      camera.setAttribute("wasd-controls", {acceleration: 25});
+    }
+  });
+  window.addEventListener("keyup", function(e){
+    if(e.key.toLowerCase() == "shift"){
+      camera.setAttribute('wasd-controls', {acceleration: 15});
+    }
+  });
+
   loop();
 })
 
 function loop(){
-  rock_text.setAttribute("value",`Rocks: ${rock_amount}`); 
   for(let rock of rocks){
     rock.dug();
     rock.faceCamera();
   }
-  copper_text.setAttribute("value",`Copper: ${copper_amount}`); 
   for(let copper of coppers){
     copper.dug();
     copper.faceCamera();
   }
 
-  if(money>=100 && !(iron)){
-    pickaxe_power = 100;
-    money -= 100;
-    
-    pickaxe = new IronPickaxe(pickaxe_power)
-    iron = true;
-  }
-
-
-  money_text.setAttribute("value",`Money: $${money}`);
+  money_text.textContent = `Money: $${money}`;
   sellzone.sellItems();
-
+  shop.updateMenuStyles();
   window.requestAnimationFrame( loop );
 }
 

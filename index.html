@@ -2,6 +2,8 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="script.js"></script>
+    <script src="picks/diamondpickaxe.js"></script>
+    <script src="picks/copperpickaxe.js"></script>
     <script src="picks/ironpickaxe.js"></script>
     <script src="picks/pickaxe.js"></script>
     <script src="ores/rock.js"></script>
@@ -12,6 +14,175 @@
     <script src="ores/gold.js"></script>
     <script src="ores/diamond.js"></script>
     <script src="sell.js"></script>
+    <script src="shop.js"></script>
+    <script src="inventory.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
+    <style>
+      #shopMenu {
+        font-family: 'Source Sans Pro';
+        font-size: clamp(16px, 2vw, 25px);
+        background: rgba(0, 0, 0, 0.6);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: clamp(20px, 5vw, 50px);
+        color: white;
+        text-align: center;
+        display: none;
+        width: 400px;
+        max-width: 95vw;
+        max-height: 95vh;
+        user-select: none;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+      }
+      #shopMenu h2 {
+        margin-top: 0;
+        color: #ffffff;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+      }
+      #shopMenu button {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px auto;
+        border-radius: 5px;
+        font-size: clamp(14px, 1.5vw, 20px);
+        cursor: pointer;
+        display: block;
+        width: 250px;
+        user-select: none;
+      }
+      .pickbutton:hover {
+        background-color: rgba(50, 205, 50, 0.603);
+      }
+      #closeBtn {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: clamp(14px, 1.5vw, 20px);
+        cursor: pointer;
+        color: white;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      #closeBtn:hover {
+        user-select: none;
+        background: rgb(51, 51, 51);
+      }
+      #closeInventoryBtn {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: clamp(14px, 1.5vw, 20px);
+        cursor: pointer;
+        color: white;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      #closeInventoryBtn:hover {
+        user-select: none;
+        background: rgb(51, 51, 51);
+      }
+      #inventoryMenu {
+        font-family: 'Source Sans Pro';
+        font-size: clamp(16px, 2vw, 25px);
+        background: rgba(0, 0, 0, 0.6);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: clamp(20px, 5vw, 50px);
+        color: white;
+        text-align: center;
+        display: none;
+        z-index: 1000;
+        max-width: 95vw;
+        max-height: 95vh;
+        user-select: none;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+      }
+      #inventoryMenu h2, #inventoryMenu h3 {
+        margin-top: 0;
+        color: #ffffff;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+        user-select: none;
+      }
+      #pickaxes button {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: clamp(16px, 2vw, 25px);
+        cursor: pointer;
+        background: rgb(0, 0, 0);
+        color:white;
+        width: 200px;
+        user-select: none;
+      }
+      #money_bg {
+        color: #ffffff;
+        position: fixed; 
+        left: 40px; 
+        bottom: 40px;
+        border-radius: 5px; 
+        padding: 2px 5px; 
+        font-size: 40px; 
+        font-family: 'Source Sans Pro';
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+        user-select: none;
+      }
+      #poor {
+        font-family: 'Source Sans Pro';
+        font-size: 25px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 50px;
+        color: white;
+        text-align: center;
+        display: none;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+        user-select: none;
+      }
+    </style>
   </head>
   <body>
     <a-scene>
@@ -22,18 +193,17 @@
 
       <a-plane src="#grass" repeat="100 100" position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
       <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
-      <a-camera id="maincamera" fov="90" look-controls wasd-controls="acceleration:15" position="0 1.6 0">
+      <a-camera id="maincamera" fov="90" look-controls="pointerLockEnabled: true" wasd-controls="acceleration:15" position="0 1.6 0">
             <a-entity cursor="fuse: false"
             position="0 0 -0.01"
             geometry="primitive: circle; radius:0.0001;"
             material="color: black; shader: flat"
             raycaster="objects: [clickable]">
             </a-entity>
-            <a-text id="rock_text" width="0.025" position="-0.0175 0.0075 -0.01" value="Rocks: " color="black"></a-text>
-            <a-text id="copper_text" width="0.025" position="-0.0175 0.0050 -0.01" value="Copper: " color="black"></a-text>
-            <a-text id="money_text" width="0.025" position="-0.0175 0.0025 -0.01" value="Money: " color="black"></a-text>
       </a-entity>
       
     </a-scene>
+    <div id="money_bg">Money: </div>
+    <div id="poor">Go Earn More Money</div>
   </body>
 </html>

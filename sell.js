@@ -9,7 +9,7 @@ class SellZone{
         this.obj.setAttribute("scale",{x:2,y:1,z:2})
         this.obj.setAttribute("color","green");
 
-        const that = this;
+        let that = this;
         window.addEventListener("keydown", function(e) {
             if(e.key.toLowerCase() == "e" && distance(camera, that.obj) < 4){
                 that.sell = true;
@@ -20,23 +20,15 @@ class SellZone{
         scene.append(this.obj)
     }
 
-    faceCamera(){
-        let cameraPos = camera.object3D.position;
-        this.healthBarContainer.object3D.lookAt(cameraPos);
-    }
-
     sellItems(){
         if(this.sell){
-            money += rock_amount * 10;
+            money += rock_amount * 100;
             rock_amount = 0;
 
-            // Sell copper: 25 dollars each
-            money += copper_amount * 25;
+            money += copper_amount * 250;
             copper_amount = 0;
             this.sell = false;
         }
-        // Sell rocks: 10 dollars each
-
     }
 }
 
