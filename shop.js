@@ -23,7 +23,6 @@ class Shop{
 
         this.poor = document.getElementById("poor");
 
-        this.updateMenuStyles();
 
         let that = this;
         document.getElementById("stoneBtn").addEventListener("click", function() {

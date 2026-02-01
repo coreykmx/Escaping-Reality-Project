@@ -56,7 +56,9 @@ function loop(){
     copper.dug();
     copper.faceCamera();
   }
-
+  if(distance(shop.obj,camera)>5){
+    shop.menu.style.display = "none";
+  }
   money_text.textContent = `Money: $${money}`;
   sellzone.sellItems();
   shop.updateMenuStyles();
