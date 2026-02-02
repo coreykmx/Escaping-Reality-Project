@@ -24,7 +24,7 @@ class Rock{
         this.healthbar = document.createElement("a-box");
         this.healthbar.setAttribute("scale",{x:0.8,y:0.15,z:0.06})
         this.healthbar.setAttribute("color","#66FF00");
-        this.healthbar.setAttribute("position",{x:0,y:0,z:0.025})
+        this.healthbar.setAttribute("position",{x:0,y:0,z:0})
         this.healthBarContainer.append(this.healthbar);
 
         this.obj.setAttribute("clickable","");

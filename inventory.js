@@ -23,9 +23,15 @@ class Inventory {
         window.addEventListener("keydown", function(e) {
             if(e.key.toLowerCase() == "tab"){
                 e.preventDefault();
-                if (shop) shop.menu.style.display = "none";
+                if (shop){
+                    shop.menu.style.display = "none";
+                }
                 that.updateMenu();
-                that.menu.style.display = (that.menu.style.display === "block") ? "none" : "block";
+                if(that.menu.style.display == "block"){
+                    that.menu.style.display = "none";
+                }else{
+                    that.menu.style.display = "block";
+                }
             }
         });
     }

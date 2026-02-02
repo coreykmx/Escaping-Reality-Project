@@ -13,10 +13,10 @@ class Shop{
         this.menu.id = "shopMenu";
         this.menu.innerHTML = `
             <h2>Pickaxes</h2>
-            <button class="pickbutton" id="stoneBtn">Stone Pickaxe - Free</button><br><br>
-            <button class="pickbutton" id="copperBtn">Copper Pickaxe - $50</button><br><br>
-            <button class="pickbutton" id="ironBtn">Iron Pickaxe - $100</button><br><br>
-            <button class="pickbutton" id="diamondBtn">Diamond Pickaxe - $1000</button><br><br>
+            <button class="pickbutton" id="stoneBtn">Stone Pickaxe - Free</button><br>
+            <button class="pickbutton" id="copperBtn">Copper Pickaxe - $50</button><br>            
+            <button class="pickbutton" id="ironBtn">Iron Pickaxe - $100</button><br>
+            <button class="pickbutton" id="diamondBtn">Diamond Pickaxe - $1000</button><br>
             <button id="closeBtn">Close</button>
         `;
         document.body.append(this.menu);
