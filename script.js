@@ -7,7 +7,7 @@ let stone = false, copper = false, iron = false, diamond = false;
 let owned_stone = false, owned_copper = false, owned_iron = false, owned_diamond = false;
 let money = 0, money_text;  
 let sellzone, shop, inventory;
-let canMine = true;
+let cooldown = false;
 
 window.addEventListener("DOMContentLoaded",function() {
     scene = document.querySelector("a-scene");
@@ -59,12 +59,12 @@ function loop(){
   if(distance(shop.obj,camera)>5){
     shop.menu.style.display = "none";
   }
+
   money_text.textContent = `Money: $${money}`;
   sellzone.sellItems();
   shop.updateMenuStyles();
   window.requestAnimationFrame( loop );
 }
-
 
 function distance(obj1,obj2){
   let x1 = obj1.object3D.position.x;

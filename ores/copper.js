@@ -30,12 +30,12 @@ class Copper{
 
         this.obj.setAttribute("clickable","");
         this.obj.addEventListener("click",()=>{
-            if(canMine && (stone ||copper || iron || diamond) && distance(camera,this.obj)<4){
-                canMine = false;
-                setTimeout(() => canMine = true, 1000);
+            if(!cooldown && (stone ||copper || iron || diamond) && distance(camera,this.obj)<4){
                 this.h -= pickaxe_power;
-            console.log("Health:", this.h);
-            this.updateHealthBar();
+                console.log("Health:", this.h);
+                this.updateHealthBar();
+                cooldown = true;
+                setTimeout(() => cooldown = false, 1250);
             }
 
             if(this.h <= 0){

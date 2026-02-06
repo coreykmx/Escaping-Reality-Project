@@ -1,12 +1,14 @@
 class CopperPickaxe{
     constructor(p){
+        this.dr = 0.05;
         this.power = p
         let camera = document.querySelector("a-camera");
-        this.obj = document.createElement("a-box");
-        this.obj.setAttribute("color","brown");
-        this.obj.setAttribute("scale",{x:0.25,y:1.5,z:0.25})
-        this.obj.setAttribute("position",{x:1.5,y:-0.3,z:-1})
+        this.obj = document.createElement("a-gltf-model");
+        this.obj.setAttribute("src","#cpickaxe")
+        this.obj.setAttribute("scale",{x:0.35,y:0.35,z:0.35})
+        this.obj.setAttribute("position",{x:1,y:-1,z:-1})
+        this.obj.setAttribute("rotation",{x:0,y:0,z:0})
+        this.obj.setAttribute("animation-mixer","")
         camera.append(this.obj)
     }
-
 }

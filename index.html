@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
     <script src="script.js"></script>
     <script src="picks/diamondpickaxe.js"></script>
     <script src="picks/copperpickaxe.js"></script>
@@ -13,9 +14,14 @@
     <script src="ores/platinum.js"></script>
     <script src="ores/gold.js"></script>
     <script src="ores/diamond.js"></script>
+    <script src="map/cave.js"></script>
     <script src="sell.js"></script>
     <script src="shop.js"></script>
     <script src="inventory.js"></script>
+    <a-asset_item id="pickaxe" src="pick.glb"></a-asset_item>
+    <a-asset_item id="cpickaxe" src="cpick.glb"></a-asset_item>
+    <a-asset_item id="ipickaxe" src="ipick.glb"></a-asset_item>
+    <a-asset_item id="dpickaxe" src="dpick.glb"></a-asset_item>
     <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
     <style>
       #shopMenu {
@@ -114,14 +120,21 @@
         text-align: center;
         display: none;
         z-index: 1000;
+        width: 600px;
+        height: 500px;
         max-width: 95vw;
         max-height: 95vh;
+        overflow: hidden;
         user-select: none;
         text-shadow:
         -1px -1px 0 #000,  
         1px -1px 0 #000,
         -1px  1px 0 #000,
         1px  1px 0 #000;
+      }
+      #pickaxesSection {
+        overflow-y: auto;
+        max-height: 350px;
       }
       #inventoryMenu h2, #inventoryMenu h3 {
         margin-top: 0;
@@ -191,16 +204,17 @@
           <img id="sky" src="background.jpg"></img>
           <img id="grass" src="grass.jpg"></img>
       </a-assets>
-
       <a-plane src="#grass" repeat="100 100" position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
       <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
+      
       <a-camera id="maincamera" fov="90" look-controls="pointerLockEnabled: true" wasd-controls="acceleration:15" position="0 1.6 0">
             <a-entity cursor="fuse: false"
             position="0 0 -0.01"
-            geometry="primitive: circle; radius:0.0001;"
+            geometry="primitive: circle; radius:0.000075;"
             material="color: black; shader: flat"
             raycaster="objects: [clickable]">
             </a-entity>
+            <a-text value="67"></a-text>
       </a-entity>
       
     </a-scene>

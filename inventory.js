@@ -4,11 +4,17 @@ class Inventory {
         this.menu.id = "inventoryMenu";
         this.menu.innerHTML = `
             <h2>Inventory</h2>
-            <div id="rockDisplay">Rocks: 0</div>
-            <div id="copperDisplay">Copper: 0</div>
-            <br>
-            <h3>Pickaxes</h3>
-            <div id="pickaxes"></div>
+            <div style="display: flex; gap: 40px; flex: 1; overflow: hidden;">
+                <div id="resourcesSection">
+                    <h3>Rocks</h3>
+                    <div id="rockDisplay">Rocks: 0</div>
+                    <div id="copperDisplay">Copper: 0</div>
+                </div>
+                <div id="pickaxesSection">
+                    <h3>Pickaxes</h3>
+                    <div id="pickaxes"></div>
+                </div>
+            </div>
             <button id="closeInventoryBtn">Close</button>
         `;
         document.body.append(this.menu);
