@@ -14,11 +14,9 @@ class StonePickaxe{
             this.mining = true;
             if (this.mining) {
                 this.obj.removeAttribute("animation-mixer");
-
                 setTimeout(() => {
                     this.obj.setAttribute("animation-mixer", "clip:ArmatureAction;loop:once");
-                }, 10);
-
+                }, 1);
                 this.mining = false;
             }            
         

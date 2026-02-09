@@ -18,10 +18,6 @@
     <script src="sell.js"></script>
     <script src="shop.js"></script>
     <script src="inventory.js"></script>
-    <a-asset_item id="pickaxe" src="pick.glb"></a-asset_item>
-    <a-asset_item id="cpickaxe" src="cpick.glb"></a-asset_item>
-    <a-asset_item id="ipickaxe" src="ipick.glb"></a-asset_item>
-    <a-asset_item id="dpickaxe" src="dpick.glb"></a-asset_item>
     <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
     <style>
       #shopMenu {
@@ -203,7 +199,13 @@
       <a-assets>
           <img id="sky" src="background.jpg"></img>
           <img id="grass" src="grass.jpg"></img>
+          <a-asset_item id="pickaxe" src="pick.glb"></a-asset_item>
+          <a-asset_item id="idlepickaxe" src="idlepick.glb"></a-asset_item>
+          <a-asset_item id="cpickaxe" src="cpick.glb"></a-asset_item>
+          <a-asset_item id="ipickaxe" src="ipick.glb"></a-asset_item>
+          <a-asset_item id="dpickaxe" src="dpick.glb"></a-asset_item>
       </a-assets>
+      <a-light type="ambient" intensity="5"></a-light>       
       <a-plane src="#grass" repeat="100 100" position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
       <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
       
