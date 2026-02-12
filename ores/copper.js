@@ -69,6 +69,8 @@ class Copper{
     dug(){
         if(this.obj.mined && !this.counted){
             this.obj.setAttribute("opacity",0)
+            this.healthbarbg.setAttribute("opacity",0)
+            this.healthbar.setAttribute("opacity",0)
             this.obj.setAttribute("position",{x:this.x,y:this.y-10,z:this.z})
             copper_amount++
             this.counted = true
@@ -77,6 +79,8 @@ class Copper{
 
     regenerate(){
         this.obj.setAttribute("opacity",1)
+        this.healthbarbg.setAttribute("opacity",1)
+        this.healthbar.setAttribute("opacity",1)
         this.obj.setAttribute("position",{x:this.x,y:this.y,z:this.z})
         this.h = 200;
         this.obj.mined = false;

@@ -68,7 +68,7 @@ class Shop{
             }else{
                 that.menu.style.display = "none";
                 that.poor.style.display = "block";
-                setTimeout(() => { that.poor.style.display = "none"; }, 1000);
+                setTimeout(() => { that.poor.style.display = "none"; }, 3000);
             }
         });
         document.getElementById("diamondBtn").addEventListener("click", function() {
@@ -85,7 +85,7 @@ class Shop{
             }else{
                 that.menu.style.display = "none";
                 that.poor.style.display = "block";
-                setTimeout(() => { that.poor.style.display = "none"; }, 1000);
+                setTimeout(() => { that.poor.style.display = "none"; }, 3000);
             }
         });
         document.getElementById("closeBtn").addEventListener("click", function() {

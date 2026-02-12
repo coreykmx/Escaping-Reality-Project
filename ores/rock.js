@@ -33,8 +33,6 @@ class Rock{
                 this.h -= pickaxe_power;
                 console.log("Health:", this.h);
                 this.updateHealthBar();
-                cooldown = true;
-                setTimeout(() => cooldown = false, 1250);
             }
 
             if(this.h <= 0){
@@ -68,6 +66,8 @@ class Rock{
     dug(){
         if(this.obj.mined && !this.counted){
             this.obj.setAttribute("opacity",0)
+            this.healthbarbg.setAttribute("opacity",0)
+            this.healthbar.setAttribute("opacity",0)
             this.obj.setAttribute("position",{x:this.x,y:this.y-10,z:this.z})
             rock_amount++
             this.counted = true
@@ -76,6 +76,8 @@ class Rock{
 
     regenerate(){
         this.obj.setAttribute("opacity",1)
+        this.healthbarbg.setAttribute("opacity",1)
+        this.healthbar.setAttribute("opacity",1)
         this.obj.setAttribute("position",{x:this.x,y:this.y,z:this.z})
         this.h = 100;
         this.obj.mined = false;

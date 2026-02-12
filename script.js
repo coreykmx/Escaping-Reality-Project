@@ -17,21 +17,15 @@ window.addEventListener("DOMContentLoaded",function() {
     shop = new Shop(0,1,5);
     inventory = new Inventory();
 
-    // Rocks
-    for(let i=0;i<25; i++){
-      let a = rnd(-25,25);
-      let b = rnd(-25,25);
-      let r = new Rock(a,1,b,100);
+    // Rock
+      let r = new Rock(-5,1,0,100);
       rocks.push(r);
-    } 
+
 
     // Copper
-    for(let i=0;i<25; i++){
-      let a = rnd(-25,25);
-      let b = rnd(-25,25);
-      let c = new Copper(a,1,b,200);
+      let c = new Copper(5,1,0,200);
       coppers.push(c);
-    }
+  
 
   window.addEventListener("keydown", function(e){
     if(e.key.toLowerCase() == "shift"){

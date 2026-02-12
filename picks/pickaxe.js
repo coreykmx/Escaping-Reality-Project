@@ -3,7 +3,7 @@ class StonePickaxe{
         this.power = p
         this.mining = false;
         let camera = document.querySelector("a-camera");
-        this.obj = document.createElement("a-gltf-model");
+        this.obj = document.querySelector("#pickaxeholder");
         this.obj.setAttribute("src","#pickaxe")
         this.obj.setAttribute("scale",{x:0.35,y:0.35,z:0.35})
         this.obj.setAttribute("position",{x:1,y:-1.75,z:-1})
@@ -18,9 +18,11 @@ class StonePickaxe{
                     this.obj.setAttribute("animation-mixer", "clip:ArmatureAction;loop:once");
                 }, 1);
                 this.mining = false;
+                setTimeout(() => cooldown = true, 10);               
+                setTimeout(() => cooldown = false, 1250);
             }            
-        
         });
+
         camera.append(this.obj)
     }
 
