@@ -19,6 +19,7 @@
     <script src="sell.js"></script>
     <script src="shop.js"></script>
     <script src="inventory.js"></script>
+    <script src="quest.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
     <style>
       #shopMenu {
@@ -26,7 +27,7 @@
         font-size: clamp(16px, 2vw, 25px);
         background: rgba(0, 0, 0, 0.6);
         border: 5px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -83,6 +84,63 @@
         background: rgba(0, 0, 0, 0.6);
       }
       #closeBtn:hover {
+        user-select: none;
+        background: rgb(51, 51, 51);
+      }
+      #questMenu {
+        font-family: 'Source Sans Pro';
+        font-size: clamp(16px, 2vw, 25px);
+        background: rgba(0, 0, 0, 0.6);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: clamp(20px, 5vw, 50px);
+        color: white;
+        text-align: center;
+        display: none;
+        width: 500px;
+        height: 500px;
+        max-width: 90vw;
+        max-height: 90vh;
+        user-select: none;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+      }
+      #closeQuestBtn {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: clamp(14px, 1.5vw, 20px);
+        cursor: pointer;
+        color: white;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      #closeQuestBtn:hover {
+        user-select: none;
+        background: rgb(51, 51, 51);
+      }
+      #completeQuestBtn {
+        font-family: 'Source Sans Pro';
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: clamp(14px, 1.5vw, 20px);
+        cursor: pointer;
+        color: white;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      #completeQuestBtn:hover {
         user-select: none;
         background: rgb(51, 51, 51);
       }
@@ -193,6 +251,27 @@
         1px  1px 0 #000;
         user-select: none;
       }
+      #questMessage {
+        font-family: 'Source Sans Pro';
+        font-size: 25px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 50px;
+        color: white;
+        text-align: center;
+        display: none;
+        text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+        user-select: none;
+      }
     </style>
   </head>
   <body>
@@ -205,10 +284,13 @@
           <a-asset_item id="cpickaxe" src="cpick.glb"></a-asset_item>
           <a-asset_item id="ipickaxe" src="ipick.glb"></a-asset_item>
           <a-asset_item id="dpickaxe" src="dpick.glb"></a-asset_item>
+          <a-asset_item id="rock" src="rock.glb"></a-asset_item>}
+          <a-asset_item id="copper" src="copper.glb"></a-asset_item>
+          <a-asset_item id="questmodel" src="board.gltf"></a-asset_item>
       </a-assets>
-      <a-light type="ambient" intensity="2"></a-light>   
+      <a-light type="ambient" color="#fff" intensity="0.5" castShadow="true"></a-light>
       <a-sky src="#sky" position="0 500 0"rotation="0 0 0" radius="1000"></a-sky>
-      <a-entity environment="preset:goldmine;dressing:'none'"></a-entity>
+      <a-entity environment="preset:goldmine;stageSize:500;playArea:1;dressing:'none';ground:canyon;groundTexture:walkernoise"></a-entity>
 
       <a-camera id="maincamera" fov="90" look-controls="pointerLockEnabled: true" wasd-controls="acceleration:15" position="0 1.6 0">
             <a-entity cursor="fuse: false"
@@ -222,6 +304,7 @@
       
     </a-scene>
     <div id="money_bg">Money: </div>
-    <div id="poor">Go Earn More Money</div>
+    <div id="poor">get richer</div>
+    <div id="questMessage"></div>
   </body>
 </html>

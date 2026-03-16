@@ -6,7 +6,7 @@ let coppers=[], copper_amount = 0, copper_text;
 let stone = false, copper = false, iron = false, diamond = false;
 let owned_stone = false, owned_copper = false, owned_iron = false, owned_diamond = false;
 let money = 0, money_text;  
-let sellzone, shop, inventory;
+let sellzone, shop, inventory, quest;
 let cooldown = false;
 
 window.addEventListener("DOMContentLoaded",function() {
@@ -16,17 +16,24 @@ window.addEventListener("DOMContentLoaded",function() {
     sellzone = new SellZone(0,1,-5);
     shop = new Shop(0,1,5);
     inventory = new Inventory();
+    quest = new QuestGiver(10,1,0);
 
-    // Rock
-      let r = new Rock(-5,1,0,100);
-      rocks.push(r);
+   
 
+    for (let i = 0; i < 25; i++) {
+      let x = rnd(-25,25)
+      let z = rnd(-25,25)
+      let r = new Rock(x, 0, z, 100)
+      rocks.push(r)
+    }
 
-    // Copper
-      let c = new Copper(5,1,0,200);
-      coppers.push(c);
+   for (let i = 0; i < 25; i++) {
+      let x = rnd(-25,25)
+      let z = rnd(-25,25)
+      let c = new Copper(x, 0, z, 100)
+      coppers.push(c)
+    }
   
-
   window.addEventListener("keydown", function(e){
     if(e.key.toLowerCase() == "shift"){
       camera.setAttribute("wasd-controls", {acceleration: 25});
@@ -57,6 +64,7 @@ function loop(){
   money_text.textContent = `Money: $${money}`;
   sellzone.sellItems();
   shop.updateMenuStyles();
+  inventory.updateMenu()
   window.requestAnimationFrame( loop );
 }
 

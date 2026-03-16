@@ -13,13 +13,13 @@ class StonePickaxe{
             if (cooldown) return;
             this.mining = true;
             if (this.mining) {
-                this.obj.removeAttribute("animation-mixer");
+                    this.obj.removeAttribute("animation-mixer");
                 setTimeout(() => {
                     this.obj.setAttribute("animation-mixer", "clip:ArmatureAction;loop:once");
                 }, 1);
                 this.mining = false;
-                setTimeout(() => cooldown = true, 10);               
-                setTimeout(() => cooldown = false, 1250);
+                setTimeout(()=> cooldown = true, 1)
+                setTimeout(() => cooldown = false, 1000);
             }            
         });
 

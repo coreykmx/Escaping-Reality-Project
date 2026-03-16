@@ -19,8 +19,6 @@ class Inventory {
         `;
         document.body.append(this.menu);
 
-        this.updateMenu();
-
         let that = this;
         document.getElementById("closeInventoryBtn").addEventListener("click", function() {
             that.menu.style.display = "none";
