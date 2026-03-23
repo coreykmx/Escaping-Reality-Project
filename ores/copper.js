@@ -11,7 +11,7 @@ class Copper{
         this.obj.setAttribute("scale",{x:0.25,y:0.25,z:0.25})
         this.obj.mined = false;
         this.counted = false;
-
+        
         this.healthBarContainer = document.createElement("a-entity");
         this.healthBarContainer.setAttribute("scale", { x: 6, y: 6, z: 6 });
         this.healthBarContainer.setAttribute("position", { x: 0, y:y+7, z: 0 });
@@ -42,7 +42,7 @@ class Copper{
                         setTimeout(() => this.regenerate(), 30000);
                     }
                 }, 1000);
-                setTimeout(() => cooldown = false, 1000);
+                setTimeout(() => cooldown = false, 600);
             }
         });  
 

@@ -9,6 +9,7 @@ class Rock {
         this.obj = document.createElement("a-gltf-model");
         this.obj.setAttribute("src", "#rock");
         this.obj.setAttribute("scale",{x:0.25,y:0.25,z:0.25});
+        
         this.obj.mined = false;
         this.counted = false;
 
@@ -42,7 +43,7 @@ class Rock {
                         setTimeout(() => this.regenerate(), 30000);
                     }
                 }, 1000);
-                setTimeout(() => cooldown = false, 1000);
+                setTimeout(() => cooldown = false, 600);
             }
         });  
 

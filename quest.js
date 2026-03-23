@@ -7,17 +7,19 @@ class QuestGiver {
         this.currentQuest = null;
         this.generateNewQuest();
 
-        this.obj = document.createElement("a-box");
-        this.obj.setAttribute("rotation", { x: 0.5, y: 0.5, z: 0.5 });
+        this.obj = document.createElement("a-gltf-model");
+        this.obj.setAttribute("scale", { x: 0.5, y: 0.5, z: 0.5 });
+        this.obj.setAttribute("rotation", { x: 0, y: 90, z: 0 });
         this.obj.setAttribute("position", { x: this.x, y: this.y, z: this.z});
-        this.obj.setAttribute("src", "#questmodel");
+        this.obj.setAttribute("src", "#quest");
+        this.obj.setAttribute("static-body","shape: box");
+        let img = document.createElement("a-plane");
+        img.setAttribute("src","quest.jpg");
+        img.setAttribute("scale",{x:2.5,y:2.5,z:2.5})
+        img.setAttribute("rotation",{x:0,y:90,z:0})
+        img.setAttribute("position",{x:0.5,y:7.1,z:0})
+        this.obj.append(img);  
 
-        let light = document.createElement("a-light");
-        light.setAttribute("type", "ambient");
-        light.setAttribute("intensity", "1.5");
-        light.setAttribute("distance", "10");
-        light.setAttribute("receive", "false");
-        this.obj.append(light);
         this.menu = document.createElement("div");
         this.menu.id = "questMenu";
         this.menu.style.display = "none";

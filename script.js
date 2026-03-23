@@ -3,6 +3,7 @@ let scene, pickaxe, camera;
 let pickaxe_power = 25;
 let rocks=[], rock_amount = 0, rock_text;
 let coppers=[], copper_amount = 0, copper_text;
+let irons=[], iron_amount = 0, iron_text;
 let stone = false, copper = false, iron = false, diamond = false;
 let owned_stone = false, owned_copper = false, owned_iron = false, owned_diamond = false;
 let money = 0, money_text;  
@@ -13,12 +14,10 @@ window.addEventListener("DOMContentLoaded",function() {
     scene = document.querySelector("a-scene");
     camera = document.querySelector("#maincamera");
     money_text = document.getElementById("money_bg");
-    sellzone = new SellZone(0,1,-5);
-    shop = new Shop(0,1,5);
+    sellzone = new SellZone(-10,0,30);
+    shop = new Shop(0,0,30);
     inventory = new Inventory();
-    quest = new QuestGiver(10,1,0);
-
-   
+    quest = new QuestGiver(10,0,30);   
 
     for (let i = 0; i < 25; i++) {
       let x = rnd(-25,25)
@@ -30,18 +29,25 @@ window.addEventListener("DOMContentLoaded",function() {
    for (let i = 0; i < 25; i++) {
       let x = rnd(-25,25)
       let z = rnd(-25,25)
-      let c = new Copper(x, 0, z, 100)
+      let c = new Copper(x, 0, z, 200)
       coppers.push(c)
     }
-  
+
+    for (let i = 0; i < 25; i++) {
+      let x = rnd(-25,25)
+      let z = rnd(-25,25)
+      let i = new Iron(x, 0, z, 500)
+      irons.push(i)
+    }
+
   window.addEventListener("keydown", function(e){
-    if(e.key.toLowerCase() == "shift"){
-      camera.setAttribute("wasd-controls", {acceleration: 25});
+    if(e.key.toLowerCase() == "shift" && player){
+      player.setAttribute("movement-controls", "speed: 24; fly: false; constrainToNavMesh: false");
     }
   });
   window.addEventListener("keyup", function(e){
-    if(e.key.toLowerCase() == "shift"){
-      camera.setAttribute('wasd-controls', {acceleration: 15});
+    if(e.key.toLowerCase() == "shift" && player){
+      player.setAttribute('movement-controls', 'speed: 12; fly: false; constrainToNavMesh: false');
     }
   });
 
@@ -56,6 +62,10 @@ function loop(){
   for(let copper of coppers){
     copper.dug();
     copper.faceCamera();
+  }
+  for(let iron of irons){
+    iron.dug();
+    iron.faceCamera();
   }
   if(distance(shop.obj,camera)>5){
     shop.menu.style.display = "none";

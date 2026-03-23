@@ -5,9 +5,18 @@ class Shop{
         this.z = z;
         this.sell = false;
 
-        this.obj = document.createElement("a-box");
-        this.obj.setAttribute("scale",{x:2,y:1,z:2})
+        this.obj = document.createElement("a-gltf-model");
+        this.obj.setAttribute("src","#store1");
+        this.obj.setAttribute("scale",{x:0.5,y:0.5,z:0.5})
+        this.obj.setAttribute("rotation", { x: 0, y: 90, z: 0 });
         this.obj.setAttribute("color","orange");
+        this.obj.setAttribute("static-body","shape: box");
+        let img = document.createElement("a-plane");
+        img.setAttribute("src","pickaxe.jpg");
+        img.setAttribute("scale",{x:2.5,y:2.5,z:2.5})
+        img.setAttribute("rotation",{x:0,y:90,z:0})
+        img.setAttribute("position",{x:0.5,y:7.1,z:0})
+        this.obj.append(img);  
 
         this.menu = document.createElement("div");
         this.menu.id = "shopMenu";
@@ -107,8 +116,9 @@ class Shop{
 
     updateMenuStyles() {
         let stoneBtn = document.getElementById("stoneBtn");
+        let copperBtn = document.getElementById("copperBtn");
         let ironBtn = document.getElementById("ironBtn");
-        let closeBtn = document.getElementById("closeBtn");
+        let diamondBtn = document.getElementById("diamondBtn");
 
         if (owned_stone) {
             stoneBtn.disabled = true;
