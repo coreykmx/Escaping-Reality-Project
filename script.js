@@ -41,13 +41,13 @@ window.addEventListener("DOMContentLoaded",function() {
     }
 
   window.addEventListener("keydown", function(e){
-    if(e.key.toLowerCase() == "shift" && player){
-      player.setAttribute("movement-controls", "speed: 24; fly: false; constrainToNavMesh: false");
+    if(e.key.toLowerCase() == "shift"){
+      camera.setAttribute("wasd-controls", "acceleration: 20;");
     }
   });
   window.addEventListener("keyup", function(e){
-    if(e.key.toLowerCase() == "shift" && player){
-      player.setAttribute('movement-controls', 'speed: 12; fly: false; constrainToNavMesh: false');
+    if(e.key.toLowerCase() == "shift"){
+      camera.setAttribute('wasd-controls', 'acceleration: 12;');
     }
   });
 

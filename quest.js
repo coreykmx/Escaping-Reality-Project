@@ -37,7 +37,7 @@ class QuestGiver {
     }
 
     generateNewQuest() {
-        let types = ["rock", "copper"];
+        let types = ["rock", "copper", "iron"];
         this.type = types[Math.floor(Math.random() * types.length)];
         this.amountNeeded = Math.floor(rnd(5,15)); 
 
@@ -66,8 +66,10 @@ class QuestGiver {
 
         if (this.type === "rock") {
             playerAmount = rock_amount;
-        } else {
+        } else if (this.type === "copper") {
             playerAmount = copper_amount;
+        } else if (this.type === "iron") {
+            playerAmount = iron_amount;
         }
 
         if (playerAmount >= this.amountNeeded) {
@@ -77,6 +79,9 @@ class QuestGiver {
             } else if (this.type === "copper") {
                 copper_amount -= this.amountNeeded;
                 money += 300 * this.amountNeeded;
+            } else if (this.type === "iron") {
+                iron_amount -= this.amountNeeded;
+                money += 500 * this.amountNeeded;
             }
 
             this.menu.style.display = "none";
